@@ -12,6 +12,8 @@ abstract class Arguments {
   String? get valueHelp;
 
   String get usage;
+
+  get commandArg => null;
 }
 
 class Option extends Arguments {
@@ -101,7 +103,7 @@ abstract class Command extends Arguments {
     );
   }
 
-  FutureOr<Object?> run(Arguments args);
+  FutureOr<Object?> run(ArgResults args);
 
   @override
   String get usage {

@@ -25,7 +25,7 @@ class HelpCommand extends Command {
   String? get help => 'Prints this usage information';
 
   @override
-  FutureOr<Object?> run(Arguments args) async {
+  FutureOr<Object?> run(ArgResults args) async {
     var usage = runner.usage;
     for (var command in runner.commands) {
       usage += '\n ${command.usage}';

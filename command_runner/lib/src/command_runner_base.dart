@@ -17,7 +17,9 @@ class CommandRunner {
     try {
       final ArgResults results = parse(input);
       if (results.command != null) {
-        Object? output = await results.command!.run(results.command!);
+        Object? output = await results.command!.run(
+          results,
+        ); //i did silly mistake here results.command! is wrong.
         print(output.toString());
       }
     } on Exception catch (exception) {
