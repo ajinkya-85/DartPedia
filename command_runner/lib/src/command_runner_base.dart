@@ -5,22 +5,25 @@ import 'dart:async';
 import 'exceptions.dart';
 
 class CommandRunner {
-  CommandRunner({this.onError});
+  CommandRunner({this.onError, this.onOutput});
   final Map<String, Command> _commands = <String, Command>{};
 
   UnmodifiableSetView<Command> get commands =>
       UnmodifiableSetView<Command>(<Command>{..._commands.values});
 
   FutureOr<void> Function(Object)? onError;
+  FutureOr<void> Function(Object)? onOutput;
 
   Future<void> run(List<String> input) async {
     try {
       final ArgResults results = parse(input);
       if (results.command != null) {
-        Object? output = await results.command!.run(
-          results,
-        ); //i did silly mistake here results.command! is wrong.
-        print(output.toString());
+        Object? output = await results.command!.run(results);
+        if (onOutput != null) {
+          await onOutput!(output.toString());
+        } else {
+          print(output.toString());
+        }
       }
     } on Exception catch (exception) {
       if (onError != null) {
