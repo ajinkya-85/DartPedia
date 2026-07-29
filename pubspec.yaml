@@ -1,0 +1,8 @@
+name: _
+publish_to: none
+
+environment:
+  sdk: ^3.8.1
+  - cli
+  - command_runner
+  - wikipedia
