@@ -27,7 +27,7 @@ class CommandRunner {
       }
     } on Exception catch (exception) {
       if (onError != null) {
-        onError!(exception);
+        await onError!(exception);
       } else {
         rethrow;
       }

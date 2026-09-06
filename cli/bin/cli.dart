@@ -1,20 +1,5 @@
-import 'package:command_runner/command_runner.dart';
+import 'package:cli/cli.dart' as app;
 
 const version = '0.0.1';
 
-void main(List<String> arguments) {
-  var commandRunner = CommandRunner(
-    onOutput: (Object output) async {
-      await write(output.toString());
-    },
-    onError: (Object error) {
-      if (error is Error) {
-        throw error;
-      }
-      if (error is Exception) {
-        print(error);
-      }
-    },
-  )..addCommand(HelpCommand());
-  commandRunner.run(arguments);
-}
+Future<void> main(List<String> arguments) => app.main(arguments);
