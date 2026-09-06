@@ -7,7 +7,7 @@ learning and practice**.
 The project follows concepts from the official Dart documentation.
 If you are learning alongside this repository, start here:
 
-- [Dart documentation](https://dart.dev/learn/tutorial/first-app)
+- [Dart documentation](https://dart.dev/learn/tutorial)
 
 ## Project structure
 
